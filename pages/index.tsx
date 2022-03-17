@@ -5,7 +5,7 @@ import Sidebar from '../components/Sidebar'
 import Center from '../components/Center'
 import Songs from '../components/Songs'
 import Player from '../components/Player'
-import { getSession } from 'next-auth/react'
+import { getSession, GetSessionParams } from 'next-auth/react'
 
 
 
@@ -35,8 +35,8 @@ export default function Home () {
   )
 }
 
-export async function getServerSideProps(context){
-  const session = await getSession(context);
+export async function getServerSideProps(props: GetSessionParams | undefined){
+  const session = await getSession(props);
 
   return{
     props:{
